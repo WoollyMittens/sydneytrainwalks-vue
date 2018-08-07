@@ -1,0 +1,7 @@
+{
+	"remoteAssetsURL": "http://sydneytrainwalks.com/inc/",
+	"localAssetsURL": "./dist/src/",
+	"remoteMapURL": "http://4umaps.eu/{z}/{x}/{y}.png",
+	"localMapURL": "./dist/src/tiles/{z}/{x}/{y}.jpg",
+	"mapAttribution": "Maps &copy; <a href=\"http://www.4umaps.eu/\">4UMaps</a>, Data &copy; <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a> and contributors, CC BY-SA"
+}
