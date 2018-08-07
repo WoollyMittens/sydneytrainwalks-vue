@@ -79,6 +79,9 @@
 		> header {
 			flex: 0 1 auto;
 			padding: 0 1rem;
+			position: relative;
+			z-index: 2;
+			box-shadow: 0 0.3rem 0.3rem rgba(0,0,0,0.3);
 		}
 		.guide-details-row {
 			flex: 1 1 50%;
@@ -87,6 +90,8 @@
 			flex-wrap: nowrap;
 			justify-content: center;
 			align-items: stretch;
+			position: relative;
+			z-index: 1;
 
 			> figure {
 				flex: 1 1 50%;
@@ -180,6 +185,15 @@
 		> footer {
 			flex: 0 1 auto;
 			padding: 1rem;
+			position: relative;
+			z-index: 2;
+			box-shadow: 0 -0.3rem 0.3rem rgba(0,0,0,0.3);
+
+			button {
+				display: block;
+        padding: 1rem;
+        width: 100%;
+			}
 		}
 	}
 </style>

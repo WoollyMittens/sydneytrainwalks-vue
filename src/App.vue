@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <ul v-if="!id" id="guide-list">
+    <ul v-if="!id" class="guide-list">
       <guide-list-item
         v-for="(guide, id) in guides"
         :key="id"
@@ -78,5 +78,23 @@
     width: 100vw;
     height: 100vh;
     position: relative;
+  }
+  .guide-list {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    margin: 0;
+    padding: 1rem;
+    list-style: none;
+    li {
+      display: block;
+      margin: 0 0 1rem;
+
+      button {
+        display: block;
+        padding: 1rem;
+        width: 100%;
+      }
+    }
   }
 </style>
