@@ -80,6 +80,7 @@
 			flex: 0 1 auto;
 			padding: 0 1rem;
 			position: relative;
+			min-height: 70px;
 			z-index: 2;
 			box-shadow: 0 0.3rem 0.3rem rgba(0,0,0,0.3);
 		}
@@ -100,7 +101,7 @@
 			}
 			> article {
 				flex: 1 1 50%;
-				height: 100%;
+				height: calc(100vh - 70px);
 				overflow: auto;
 				padding: 0 1rem;
 

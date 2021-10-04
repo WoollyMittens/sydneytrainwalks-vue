@@ -10,7 +10,7 @@
 			:maxBounds="maxBounds">
 			<l-control-scale
 				:imperial="false"/>
-      <l-tile-layer
+			<l-tile-layer
 				:url="url"
 				:attribution="attribution"
 				v-on:tileerror="onTileError($event)"/>
@@ -29,19 +29,20 @@
 				v-for="(marker, id) in guide.markers"
 				:key="id"
 				:icon="pickIcon(marker.type)"
-        :lat-lng="marker.lat ? marker : dimensions[id]">
+				:lat-lng="marker.lat ? marker : dimensions[id]">
 				<l-popup
 					v-if="marker.description"
 					:content="marker.description"/>
-      </l-marker>
+			</l-marker>
 		</l-map>
 	</figure>
 </template>
 
 <script>
+	import L from 'leaflet';
 	import {LMap, LTileLayer, LGeoJson, LMarker, LPopup, LControlScale} from 'vue2-leaflet';
 	import "leaflet/dist/leaflet.css"
-  import Config from '../data/config.json';
+	import Config from '../data/config.json';
 	import LocationMarker from "../markers/marker-location.png";
 	import TrainMarker from "../markers/marker-train.png";
 	import FerryMarker from "../markers/marker-ferry.png";
@@ -69,12 +70,12 @@
 				maxBounds: dimensions.limits,
 				center: dimensions.center,
 				options: {
-	        style: {
+					style: {
 						color: '#ff6600',
 						weight: 5,
 						opacity: 0.66
 					}
-	      },
+				},
 				url: Config.remoteMapURL,
 				attribution: Config.mapAttribution,
 				mapLocation: null
@@ -140,10 +141,11 @@
 				var maxWidth = Math.round(13 - (maxLng - minLng) / 0.333 * 3);
 				var maxHeight = Math.round(13 - (maxLat - minLat) / 0.333 * 3);
 				var maxZoom = Math.max(Math.min(maxWidth, maxHeight, 13), 10);
+				console.log("center", (maxLat + minLat) / 2, (maxLng + minLng) / 2);
 				return {
 					center: photo ? [photo.lat, photo.lng] : [
-						(maxLat - minLat) / 2 + minLat,
-						(maxLng - minLng) / 2 + minLng
+						(maxLat + minLat) / 2,
+						(maxLng + minLng) / 2
 					],
 					limits: [
 						[minLat - 0.01, minLng - 0.01],
@@ -160,12 +162,12 @@
 				if (this.photo) {
 					this.map.setView(this.photo, 14);
 				}
-      });
+			});
 		},
 		mounted() {
 			this.$nextTick(() => {
 				this.map = this.$refs.map.mapObject;
-      });
+			});
 			this.watcher = ("geolocation" in navigator)
 				? navigator.geolocation.watchPosition(this.onUpdatedLocation.bind(this), this.onFailedLocation.bind(this), {
 					enableHighAccuracy: true,
